@@ -2,7 +2,7 @@
 import yaml
 import json
 # 直接打开读出来
-yml_content = open('checkmk.yml','r',encoding='utf-8')
+yml_content = open('../checkmk.yml', 'r', encoding='utf-8')
 config = yml_content.read()
 
 # 转换成字典读出来
