@@ -16,7 +16,7 @@ This repo only contains 2 scripts as following:
 
 - With pip
 ```
-pip install check_mk_web_api
+>>pip install check_mk_web_api
 ```
 
 ##Preparation for "saving data to mysql"
@@ -43,20 +43,20 @@ TABLE = 'all_hosts'
 mysql preparation reference manual:
 ### login mysql
 ```
-mysql -u root -p
+>>mysql -u root -p
 ```
 
 
 ### create database for storing the data
 ```
-create database checkmk character set utf8;
-use checkmk;
+>>create database checkmk character set utf8;
+>>use checkmk;
 ```
 
 ### create table in checkmk db
 
 ```
-create table all_hosts (
+>>create table all_hosts (
 uuid int primary key auto_increment,
 hostname varchar(40) not null,
 ip varchar(20),
@@ -69,14 +69,15 @@ created datetime not null);
 
 ### create user and grant access
 ```
-create user 'your_user'@'%' identified by 'your_password';
-grant all on *.* to 'your_user'@'%';
-flush privileges;
+>>create user 'your_user'@'%' identified by 'your_password';
+>>grant all on *.* to 'your_user'@'%';
+>>flush privileges;
+>>quit
 ```
 
 ### install pymysql
 ```
-pip install pymysql
+>>pip install pymysql
 ```
 
 ## SQL Selects for Grafana Panel
