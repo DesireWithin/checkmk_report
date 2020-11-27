@@ -9,6 +9,7 @@ https://docs.docker.com/engine/install/centos/
 
 阿里云yum源添加与Docker安装
 ```
+>>yum install -y yum-utils
 >>yum-config-manager --add-repo http://mirrors.aliyun.com/docker-ce/linux/centos/docker-ce.repo
 >>yum install docker-ce docker-ce-cli containerd.io
 >>yum list docker-ce --showduplicates | sort -r
