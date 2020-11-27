@@ -51,7 +51,7 @@ open git bash
 import json
 import check_mk_web_api
 
-api = check_mk_web_api.WebApi('http://checkmk.uat.homecreditcfc.cn/checkmk/check_mk/webapi.py',
+api = check_mk_web_api.WebApi(checkmk.yaml,
                               username='automation',
                               secret='23f5e208-bbf5-4aaa-a421-d3f88b8c2d50')
 

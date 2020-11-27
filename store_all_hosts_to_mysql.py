@@ -2,13 +2,13 @@
 README
 You need prepare your python environment.
 
-You need install checkmk web api following below link.
-# checkmk web api documentation: https://brennerm.github.io/check-mk-web-api/
+You need install checkmk.yml web api following below link.
+# checkmk.yml web api documentation: https://brennerm.github.io/check-mk-web-api/
 
 you need install pymysql package, by executing below.
 pip install pymysql
 
-you need put this script into the checkmk web api folder to make sure the "import" works.
+you need put this script into the checkmk.yml web api folder to make sure the "import" works.
 
 This script is to STORE CHECKMK HOSTS INTO MYSQL.
 Below variables need to be updated when you are connecting to a new environment.
@@ -23,7 +23,7 @@ DB_HOST = 'localhost'
 DB_PORT = 3306
 DB_USER = 'your_user'
 DB_PASS = 'your_password'
-DATABASE = 'checkmk'
+DATABASE = 'checkmk.yml'
 DB_CONN_CHAR = 'utf8'
 TABLE = 'all_hosts'
 
@@ -32,12 +32,12 @@ mysql preparation reference manual:
 mysql -u root -p
 
 # create database for storing the data
-create database checkmk character set utf8;
+create database checkmk.yml character set utf8;
 
 # select db
-use checkmk;
+use checkmk.yml;
 
-# create table in checkmk db
+# create table in checkmk.yml db
 create table all_hosts (
 uuid int primary key auto_increment,
 hostname varchar(40) not null,
@@ -68,7 +68,7 @@ DB_HOST = 'mysql_host_ip'
 DB_PORT = 3306
 DB_USER = 'your_db_user'
 DB_PASS = 'your_password'
-DATABASE = 'checkmk'
+DATABASE = 'checkmk.yml'
 DB_CONN_CHAR = 'utf8'
 TABLE = 'all_hosts'
 

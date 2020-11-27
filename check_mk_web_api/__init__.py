@@ -33,13 +33,13 @@ class WebApi:
 
     # Examples
     ```python
-    WebApi('http://checkmk.company.com/monitor/check_mk/webapi.py', 'automation', 'secret')
+    WebApi('http://checkmk.yml.company.com/monitor/check_mk/webapi.py', 'automation', 'secret')
     ```
     ```python
-    WebApi('http://checkmk.company.com/monitor/check_mk', 'automation', 'secret')
+    WebApi('http://checkmk.yml.company.com/monitor/check_mk', 'automation', 'secret')
     ```
     ```python
-    WebApi('http://checkmk.company.com/monitor', 'automation', 'secret')
+    WebApi('http://checkmk.yml.company.com/monitor', 'automation', 'secret')
     ```
     """
 

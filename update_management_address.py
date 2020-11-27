@@ -3,7 +3,7 @@
 """
 README
 This file is to bulk replace "management ip address" with "host ip address",
-as there is no batch import function on checkmk.
+as there is no batch import function on checkmk.yml.
 Please pay attention to below variables, which need to be updated if you are using for a new environment.
 e.g.
 CHECKMK_API_URL = 'http://checkmk_ip/mysite/check_mk/webapi.py'
@@ -14,10 +14,10 @@ MASTER_SITE = 'mysite'
 
 import check_mk_web_api
 
-CHECKMK_API_URL = 'http://checkmk_ip/checkmk/check_mk/webapi.py'
+CHECKMK_API_URL = 'http://checkmk_ip/checkmk.yml/check_mk/webapi.py'
 AUTOMATION_USER = 'automation'
 PASSWORD = 'automation_secrets'
-MASTER_SITE = 'checkmk'
+MASTER_SITE = 'checkmk.yml'
 
 
 class CheckmkAPI(check_mk_web_api.WebApi):
@@ -127,7 +127,7 @@ class CheckmkAPI(check_mk_web_api.WebApi):
                             continue
 
                     try:
-                        # Activate changes in checkmk.
+                        # Activate changes in checkmk.yml.
                         print('# Activating changes...')
                         self.activate_changes()
                     except Exception as e:
