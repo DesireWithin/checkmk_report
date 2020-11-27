@@ -1,101 +1,82 @@
-# check-mk-web-api [![Build Status](https://travis-ci.org/brennerm/check-mk-web-api.svg?branch=master)](https://travis-ci.org/brennerm/check-mk-web-api)
+# checkmk_report
 ## supported Checkmk versions
 - 1.6.0
 - 1.5.0
 
+If you want to run the script independently, you need install below package.
+###### Following https://github.com/brennerm/check-mk-web-api to install check_mk_web_api first.
+> This repo only contains 2 scripts as following:
+> 1. Bulk edits management address of host.
+> 2. Store Hosts Info to mysql
+
+
 ## Installation
-- From source code
-```
-git clone https://github.com/brennerm/check-mk-web-api
-cd check-mk-web-api
-sudo python setup.py install
-```
 
 - With pip
 ```
 pip install check_mk_web_api
 ```
 
-## [API Documentation](https://brennerm.github.io/check-mk-web-api/check_mk_web_api/)
+##Preparation for "saving data to mysql"
 
-## Quickstart
-#### Initialization
-```
-import check_mk_web_api
-api = check_mk_web_api.WebApi('http://checkmk.company.com/check_mk/webapi.py', username='automation', secret='123456')
-```
+### This script is to STORE CHECKMK HOSTS INTO MYSQL.
+Below variables need to be updated when you are connecting to a new environment. Please check the scripts and replace them.
 
-#### Add Host
+### variables:
 ```
->>> api.add_host('webserver00.com')
-```
+CHECKMK_API_URL = 'http://check_ip/mysite/check_mk/webapi.py'
+AUTOMATION_USER = 'automation'
+PASSWORD = 'd5435d51-cfa7-4c18-ae8b-7a924b7eb228'
+MASTER_SITE = 'mysite'
 
-#### Add Host in an existing WATO folder
-```
->>> api.add_host('webserver00.com', folder='webservers')
-```
-Note there is no leading '/' on the folder name.
-
-#### Edit Host
-```
->>> api.edit_host('webserver00.com', ipaddress='192.168.0.100')
+DB_HOST = 'localhost'
+DB_PORT = 3306
+DB_USER = 'your_user'
+DB_PASS = 'your_password'
+DATABASE = 'checkmk'
+DB_CONN_CHAR = 'utf8'
+TABLE = 'all_hosts'
 ```
 
-#### Delete Host
+mysql preparation reference manual:
+### login mysql
 ```
->>> api.delete_host('webserver00.com')
-```
-
-#### Delete Hosts
-```
->>> api.delete_hosts(['webserver00.com', 'webserver01.com' ])
+mysql -u root -p
 ```
 
-#### Get Host
+
+### create database for storing the data
 ```
->>> api.get_host('webserver00.com')
-{
-    'hostname': 'webserver00.com',
-    'attributes': {
-        'ipaddress': '192.168.0.100'
-    },
-    'path': ''
-}
+create database checkmk character set utf8;
+use checkmk;
 ```
 
-#### Get All Hosts
+### create table in checkmk db
+
 ```
->>> api.get_all_hosts()
-{
-    'webserver00.com': {
-        'hostname': 'webserver00.com',
-        'attributes': {
-            'ipaddress': '192.168.0.100'
-        },
-        'path': ''
-    },
-    'webserver01.com': {
-        'hostname': 'webserver01.com',
-        'attributes': {
-            'ipaddress': '192.168.0.101'
-        },
-        'path': ''
-    }
-}
+create table all_hosts (
+uuid int primary key auto_increment,
+hostname varchar(40) not null,
+ip varchar(20),
+mgt_ip varchar(20),
+folder varchar(50),
+monitored_by_site varchar(20),
+created datetime not null);
 ```
 
-#### Discover Services
+
+### create user and grant access
 ```
->>> api.discover_services('webserver00.com')
-{'removed': '0', 'new_count': '16', 'added': '16', 'kept': '0'}
+create user 'your_user'@'%' identified by 'your_password';
+grant all on *.* to 'your_user'@'%';
+flush privileges;
 ```
 
-#### Bake Agents
+### install pymysql
 ```
->>> api.bake_agents()
+pip install pymysql
 ```
 
-#### Activate Changes
-```
->>> api.activate_changes()
-```
+
+
+
