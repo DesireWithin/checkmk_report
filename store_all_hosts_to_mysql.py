@@ -57,20 +57,25 @@ flush privileges;
 import check_mk_web_api as cmwa
 import time
 import pymysql
+import yaml
 
+yml_file = open('checkmk.yml', 'r', encoding='utf-8')
+config_variables = yml_file.read()
+# 转换成字典读出来
+conf = yaml.load(config_variables, Loader=yaml.FullLoader)
 
-CHECKMK_API_URL = 'http://checkmk_ip/mysite/check_mk/webapi.py'
-AUTOMATION_USER = 'automation'
-PASSWORD = 'automation_password'
-MASTER_SITE = 'your_master_site'
+CHECKMK_API_URL = conf.get('CHECK_HOST').get('CHECKMK_API_URL')
+AUTOMATION_USER = conf.get('CHECK_HOST').get('AUTOMATION_USER')
+PASSWORD = conf.get('CHECK_HOST').get('PASSWORD')
+MASTER_SITE = conf.get('CHECK_HOST').get('MASTER_SITE')
 
-DB_HOST = 'mysql_host_ip'
-DB_PORT = 3306
-DB_USER = 'your_db_user'
-DB_PASS = 'your_password'
-DATABASE = 'checkmk.yml'
-DB_CONN_CHAR = 'utf8'
-TABLE = 'all_hosts'
+DB_HOST = conf.get('MYSQL_DB').get('DB_HOST')
+DB_PORT = conf.get('MYSQL_DB').get('DB_PORT')
+DB_USER = conf.get('MYSQL_DB').get('DB_USER')
+DB_PASS = conf.get('MYSQL_DB').get('DB_PASS')
+DATABASE = conf.get('MYSQL_DB').get('DATABASE')
+DB_CONN_CHAR = conf.get('MYSQL_DB').get('DB_CONN_CHAR')
+TABLE = conf.get('MYSQL_DB').get('TABLE')
 
 
 class CheckMKDB():

@@ -11,13 +11,19 @@ AUTOMATION_USER = 'automation'
 PASSWORD = 'automation_secrets'
 MASTER_SITE = 'mysite'
 """
-
+import yaml
 import check_mk_web_api
 
-CHECKMK_API_URL = 'http://checkmk_ip/checkmk.yml/check_mk/webapi.py'
-AUTOMATION_USER = 'automation'
-PASSWORD = 'automation_secrets'
-MASTER_SITE = 'checkmk.yml'
+
+yml_file = open('checkmk.yml', 'r', encoding='utf-8')
+config_variables = yml_file.read()
+# 转换成字典读出来
+conf = yaml.load(config_variables, Loader=yaml.FullLoader)
+
+CHECKMK_API_URL = conf.get('CHECK_HOST').get('CHECKMK_API_URL')
+AUTOMATION_USER = conf.get('CHECK_HOST').get('AUTOMATION_USER')
+PASSWORD = conf.get('CHECK_HOST').get('PASSWORD')
+MASTER_SITE = conf.get('CHECK_HOST').get('MASTER_SITE')
 
 
 class CheckmkAPI(check_mk_web_api.WebApi):
