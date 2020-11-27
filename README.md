@@ -79,8 +79,9 @@ flush privileges;
 pip install pymysql
 ```
 
-SQL Selects for Grafana Panel
+## SQL Selects for Grafana Panel
 
+### CheckMK Capacity
 ```
 SELECT
 sysdate() as time,
@@ -89,9 +90,26 @@ monitored_by_site as metric
 FROM all_hosts
 GROUP BY monitored_by_site
 ```
+### Grafana Look
+![image](https://github.com/ryanlll3/checkmk_report/blob/master/CheckMK_Sites_Capacity.jpg)
 
 
+### CheckMK Folder
+```
+SELECT
+sysdate() as time,
+count(hostname) as value,
+folder as metric
+FROM all_hosts
+GROUP BY folder
+```
+### Grafana Look
+![image](https://github.com/ryanlll3/checkmk_report/blob/master/Grafana_dashboard_Look.jpg)
 
+### CheckMK Hosts Count
 
-
-
+```
+select count(hostname) from all_hosts where folder like 'main/virtual_server/linux%';
+```
+### Grafana Look
+![image](https://github.com/ryanlll3/checkmk_report/blob/master/Hosts_Info_Grafana.jpg)
