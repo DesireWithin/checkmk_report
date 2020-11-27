@@ -2,17 +2,17 @@
     "NAME": "CheckMK Configuration",
     "CHECKMK_Version": "OMD - Open Monitoring Distribution Version 1.6.0p18.cre",
     "CHECK_HOST": {
-        "CHECKMK_API_URL": "http://checkmk_ip/mysite/check_mk/webapi.py",
+        "CHECKMK_API_URL": "http://192.168.19.8/mysite/check_mk/webapi.py",
         "AUTOMATION_USER": "automation",
-        "PASSWORD": "automation_password",
-        "MASTER_SITE": "your_master_site"
+        "PASSWORD": "d5435d51-cfa7-4c18-ae8b-7a924b7eb228",
+        "MASTER_SITE": "mysite"
     },
     "MYSQL_DB": {
-        "DB_HOST": "mysql_host_ip",
+        "DB_HOST": "192.168.19.5",
         "DB_PORT": 3306,
-        "DB_USER": "your_db_user",
-        "DB_PASS": "your_password",
-        "DATABASE": "checkmk.yml",
+        "DB_USER": "ryan",
+        "DB_PASS": "123456",
+        "DATABASE": "checkmk",
         "DB_CONN_CHAR": "utf8",
         "TABLE": "all_hosts"
     }
