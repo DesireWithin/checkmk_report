@@ -1,5 +1,5 @@
-# checkmk_report
-## supported Checkmk versions
+# Checkmk Report
+## Supported Checkmk versions
 - 1.6.0
 - 1.5.0
 
@@ -24,7 +24,7 @@ This repo only contains 2 scripts as following:
 ### The script "*all_hosts_to_mysql.py" is to STORE CHECKMK HOSTS INTO MYSQL.
 Below variables need to be updated when you are connecting to a new environment. Please check the scripts and replace them.
 
-### variables:
+### Variables:
 ```
 CHECKMK_API_URL = 'http://check_ip/mysite/check_mk/webapi.py'
 AUTOMATION_USER = 'automation'
@@ -40,20 +40,20 @@ DB_CONN_CHAR = 'utf8'
 TABLE = 'all_hosts'
 ```
 
-mysql preparation reference manual:
-### login mysql
+## Mysql preparation reference manual:
+### Login mysql
 ```
 >>mysql -u root -p
 ```
 
 
-### create database for storing the data
+### Create database for storing the data
 ```
 >>create database checkmk character set utf8;
 >>use checkmk;
 ```
 
-### create table in checkmk db
+### Create table in checkmk db
 
 ```
 >>create table all_hosts (
@@ -67,7 +67,7 @@ created datetime not null);
 ```
 
 
-### create user and grant access
+### Create user and grant access
 ```
 >>create user 'your_user'@'%' identified by 'your_password';
 >>grant all on *.* to 'your_user'@'%';
@@ -75,7 +75,7 @@ created datetime not null);
 >>quit
 ```
 
-### install pymysql
+### Install pymysql
 ```
 >>pip install pymysql
 ```
