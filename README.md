@@ -5,7 +5,9 @@
 
 If you want to run the script independently, you need install below package.
 ###### Following https://github.com/brennerm/check-mk-web-api to install check_mk_web_api first.
-> This repo only contains 2 scripts as following:
+
+
+This repo only contains 2 scripts as following:
 > 1. Bulk edits management address of host.
 > 2. Store Hosts Info to mysql
 
@@ -76,6 +78,19 @@ flush privileges;
 ```
 pip install pymysql
 ```
+
+SQL Selects for Grafana Panel
+
+```
+SELECT
+sysdate() as time,
+count(hostname) as value,
+monitored_by_site as metric
+FROM all_hosts
+GROUP BY monitored_by_site
+```
+
+
 
 
 
