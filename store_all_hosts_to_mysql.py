@@ -48,8 +48,8 @@ monitored_by_site varchar(20),
 created timestamp not null);
 
 # create user and grant access
-create user 'ryan'@'%' identified by 'ryan';
-grant all on *.* to 'ryan'@'%';
+create user 'your_user'@'%' identified by 'your_pass';
+grant all on *.* to 'your_user'@'%';
 flush privileges;
 
 """
