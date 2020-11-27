@@ -14,15 +14,15 @@ This script is to STORE CHECKMK HOSTS INTO MYSQL.
 Below variables need to be updated when you are connecting to a new environment.
 
 variables:
-CHECKMK_API_URL = 'http://192.168.19.8/mysite/check_mk/webapi.py'
+CHECKMK_API_URL = 'http://checkmk_ip/mysite/check_mk/webapi.py'
 AUTOMATION_USER = 'automation'
-PASSWORD = 'd5435d51-cfa7-4c18-ae8b-7a924b7eb228'
+PASSWORD = 'automation_secrets'
 MASTER_SITE = 'mysite'
 
 DB_HOST = 'localhost'
 DB_PORT = 3306
-DB_USER = 'ryan'
-DB_PASS = 'ryan'
+DB_USER = 'your_user'
+DB_PASS = 'your_password'
 DATABASE = 'checkmk'
 DB_CONN_CHAR = 'utf8'
 TABLE = 'all_hosts'
@@ -59,16 +59,16 @@ import time
 import pymysql
 
 
-CHECKMK_API_URL = 'http://checkmk.homecreditcfc.cn/tjwqcmk001/check_mk/webapi.py'
+CHECKMK_API_URL = 'http://checkmk_ip/mysite/check_mk/webapi.py'
 AUTOMATION_USER = 'automation'
-PASSWORD = '22b00e83-af88-42d5-94f7-2a699daa75ec'
-MASTER_SITE = 'tjwqcmk001'
+PASSWORD = 'automation_password'
+MASTER_SITE = 'your_master_site'
 
-DB_HOST = '10.67.39.21'
+DB_HOST = 'mysql_host_ip'
 DB_PORT = 3306
-DB_USER = 'ryan'
-DB_PASS = 'ryan'
-DATABASE = 'checkmk_prod'
+DB_USER = 'your_db_user'
+DB_PASS = 'your_password'
+DATABASE = 'checkmk'
 DB_CONN_CHAR = 'utf8'
 TABLE = 'all_hosts'
 

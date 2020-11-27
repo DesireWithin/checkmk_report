@@ -6,17 +6,17 @@ This file is to bulk replace "management ip address" with "host ip address",
 as there is no batch import function on checkmk.
 Please pay attention to below variables, which need to be updated if you are using for a new environment.
 e.g.
-CHECKMK_API_URL = 'http://192.168.19.8/mysite/check_mk/webapi.py'
+CHECKMK_API_URL = 'http://checkmk_ip/mysite/check_mk/webapi.py'
 AUTOMATION_USER = 'automation'
-PASSWORD = 'd5435d51-cfa7-4c18-ae8b-7a924b7eb228'
+PASSWORD = 'automation_secrets'
 MASTER_SITE = 'mysite'
 """
 
 import check_mk_web_api
 
-CHECKMK_API_URL = 'http://checkmk.uat.homecreditcfc.cn/checkmk/check_mk/webapi.py'
+CHECKMK_API_URL = 'http://checkmk_ip/checkmk/check_mk/webapi.py'
 AUTOMATION_USER = 'automation'
-PASSWORD = '23f5e208-bbf5-4aaa-a421-d3f88b8c2d50'
+PASSWORD = 'automation_secrets'
 MASTER_SITE = 'checkmk'
 
 
