@@ -8,12 +8,12 @@ You need install checkmk.yml web api following below link.
 you need install pymysql package, by executing below.
 pip install pymysql
 
-you need put this script into the checkmk.yml web api folder to make sure the "import" works.
+you need put this script into the checkmk web api folder to make sure the "import" works.
 
 This script is to STORE CHECKMK HOSTS INTO MYSQL.
 Below variables need to be updated when you are connecting to a new environment.
 
-variables:
+variables in yml file
 CHECKMK_API_URL = 'http://checkmk_ip/mysite/check_mk/webapi.py'
 AUTOMATION_USER = 'automation'
 PASSWORD = 'automation_secrets'
@@ -58,6 +58,9 @@ import check_mk_web_api as cmwa
 import time
 import pymysql
 import yaml
+import logging
+from logging.handlers import RotatingFileHandler
+
 
 yml_file = open('checkmk.yml', 'r', encoding='utf-8')
 config_variables = yml_file.read()
@@ -78,13 +81,37 @@ DB_CONN_CHAR = conf.get('MYSQL_DB').get('DB_CONN_CHAR')
 TABLE = conf.get('MYSQL_DB').get('TABLE')
 
 
+def setup_log(func):
+    """配置日志"""
+
+    # 设置日志的记录等级(# FATAL/CRITICAL = 重大的，危险的(50)
+	# WARNING = 警告(40)
+	# ERROR = 错误(30)
+	# INFO = 信息(20)
+	# DEBUG = 调试(10)
+    logging.basicConfig(level=20)
+    # 创建日志记录器，指明日志保存的路径、每个日志文件的最大大小、保存的日志文件个数上限
+    file_log_handler = RotatingFileHandler("logs/check_report.log", maxBytes=1024 * 1024 * 100, backupCount=10) #1 KB = 1024 bytes
+    # 创建日志记录的格式 日志等级 输入日志信息的文件名 行数 日志信息
+    formatter = logging.Formatter('%(asctime)s %(levelname)s File:%(module)s Line:%(lineno)d Message:%(message)s')
+    # 为刚创建的日志记录器设置日志记录格式
+    file_log_handler.setFormatter(formatter)
+    # 为全局的日志工具对象,添加日志记录器
+    logging.getLogger().addHandler(file_log_handler)
+    def wrapper(*args,**kwargs):
+        func(*args,**kwargs)
+    return wrapper
+
+
 class CheckMKDB():
+    @setup_log
     def __init__(self,host=DB_HOST,
                  port=DB_PORT,
                  user=DB_USER,
                  passwd=DB_PASS,
                  charset=DB_CONN_CHAR,
                  database=DATABASE):
+        logging.info('CheckMK DB Class Initialized.')
         self.host = host
         self.port = port
         self.user = user
@@ -92,7 +119,9 @@ class CheckMKDB():
         self.database = database
         self.charset = charset
         self.connect_database()
+        logging.info('Database Connected.')
         self.app = CheckmkAPI(CHECKMK_API_URL, username=AUTOMATION_USER, secret=PASSWORD)
+        logging.info('Initialized CheckMK API.')
 
     def connect_database(self):
         self.db = pymysql.connect(host=self.host,
@@ -113,13 +142,25 @@ class CheckMKDB():
         sql1 = "delete from %s" % TABLE
         sql2 = "truncate table %s" % TABLE
         cur = self.db.cursor()
-        cur.execute(sql1)
-        cur.execute(sql2)
-        self.db.commit()
+        try:
+            logging.info('Deleting data from table %s' % TABLE)
+            cur.execute(sql1)
+        except Exception as e:
+            logging.exception(e)
+        try:
+            logging.info('Truncating table %s' % TABLE)
+            cur.execute(sql2)
+        except Exception as e:
+            logging.exception(e)
+        try:
+            self.db.commit()
+        except Exception as e:
+            logging.error(e)
         cur.close()
 
     def store_hosts_to_db(self):
         hosts = self.get_all_hosts()
+        logging.info('Get All Hosts.')
         cur = self.db.cursor()
         for target_key, target_value in hosts.items():
             host_name = target_value.get("hostname")
@@ -140,18 +181,19 @@ class CheckMKDB():
             sql = "insert into " + TABLE + "(hostname,ip,mgt_ip,folder,monitored_by_site,created) \
             values (%s,%s,%s,%s,%s,%s)"
             try:
-                cur.execute(sql,tmp_list)
+                cur.execute(sql, tmp_list)
                 # self.db.commit()
             except Exception as e:
-                print('\n# SQL Execute exception',e)
+                logging.exception(e)
                 # self.db.rollback()
         try:
+            logging.info('Inserting Data into Database')
             self.db.commit()
         except Exception as e:
-            print('\n# DB Commit exception',e)
+            logging.error('Inserting Data Error ', e)
             self.db.rollback()
         cur.close()
-        print('Job Done. Please check data in DB.')
+        logging.info('Job Done. Data is stored in database: %s.%s' % (DATABASE, TABLE))
         return 'Job Done'
 
     def close(self):
@@ -169,7 +211,7 @@ if __name__ == '__main__':
         DB.clean_data()
         DB.store_hosts_to_db()
     except Exception as e:
-        print('\n# DB Class exception',e)
+        logging.error(e)
     except KeyboardInterrupt:
-        print('\n# Byebye')
+        logging.info('Exiting')
     DB.close()
