@@ -1,0 +1,8 @@
+2020-11-28 15:07:46,243 INFO File:checkmk_report Line:114 Message:CheckMK DB Class Initialized.
+2020-11-28 15:07:46,257 INFO File:checkmk_report Line:122 Message:Database Connected.
+2020-11-28 15:07:46,257 INFO File:checkmk_report Line:124 Message:Initialized CheckMK API.
+2020-11-28 15:07:46,257 INFO File:checkmk_report Line:146 Message:Deleting data from table all_hosts
+2020-11-28 15:07:46,261 INFO File:checkmk_report Line:151 Message:Truncating table all_hosts
+2020-11-28 15:07:46,321 INFO File:checkmk_report Line:163 Message:Get All Hosts.
+2020-11-28 15:07:46,385 INFO File:checkmk_report Line:190 Message:Inserting Data into Database
+2020-11-28 15:07:46,386 INFO File:checkmk_report Line:196 Message:Job Done. Data is stored in database: checkmk.all_hosts
