@@ -8,8 +8,8 @@ If you want to run the script independently, you need install below package.
 
 
 This repo only contains 2 scripts as following:
-> 1. Bulk edits management address of host.(only run it on your computer)
-> 2. Store Hosts Info to mysql
+> 1. (update_management_address.py)Bulk edits management address of host.(only run it on your computer)
+> 2. (checkmk_report)Store Hosts Info to mysql
 
 
 ## Installation
@@ -19,12 +19,12 @@ This repo only contains 2 scripts as following:
 >>pip install check_mk_web_api
 ```
 
-##Preparation for "saving data to mysql"
+##Preparation for "saving data to mysql(checkmk_report.py)"
 
 ### The script "*all_hosts_to_mysql.py" is to STORE CHECKMK HOSTS INTO MYSQL.
 Below variables need to be updated when you are connecting to a new environment. Please check the scripts and replace them.
 
-### Variables:
+### Variables configured in checkmk.yml file:
 ```
 CHECKMK_API_URL = 'http://check_ip/mysite/check_mk/webapi.py'
 AUTOMATION_USER = 'automation'
@@ -45,7 +45,6 @@ TABLE = 'all_hosts'
 ```
 >>mysql -u root -p
 ```
-
 
 ### Create database for storing the data
 ```

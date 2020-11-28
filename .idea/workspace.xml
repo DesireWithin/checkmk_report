@@ -21,10 +21,7 @@
   <component name="ChangeListManager">
     <list default="true" id="42628b4f-78f0-4edb-809d-a74e84735537" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/Dockerfile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/git_windows_python_prepare.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/windows_env_preparationmd" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/logging" beforeDir="false" afterPath="$PROJECT_DIR$/docs/logging_sample.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/store_all_hosts_to_mysql.py" beforeDir="false" afterPath="$PROJECT_DIR$/checkmk_report.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
