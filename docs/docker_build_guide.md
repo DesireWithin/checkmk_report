@@ -15,6 +15,10 @@ https://docs.docker.com/engine/install/centos/
 >>yum list docker-ce --showduplicates | sort -r
 >>systemctl start docker
 ```
+if you meet errors like require container-selinux, try below
+```
+>>yum install -y http://mirror.centos.org/centos/7/extras/x86_64/Packages/container-selinux-2.119.2-1.911c772.el7_8.noarch.rpm
+```
 
 Get Started with Docker
 https://docs.docker.com/get-started/
