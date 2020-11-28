@@ -51,9 +51,9 @@ open git bash
 import json
 import check_mk_web_api
 
-api = check_mk_web_api.WebApi(checkmk.yaml,
+api = check_mk_web_api.WebApi(checkmk_url,
                               username='automation',
-                              secret='23f5e208-bbf5-4aaa-a421-d3f88b8c2d50')
+                              secret='your_automation_password')
 
 all_hosts = api.get_all_hosts()
 f1 = open('all_hosts.json', 'w+')
@@ -97,7 +97,5 @@ df.to_excel('check_host_list.xls', index=None)
 
 #### find the file "check_host_list.xls"
 
-
 checkmk host 的monitored on site信息，如果在host自己的配置没有勾选，则无法导出 monitored on site的信息，默认值也取决于上一级folder
-
 """
