@@ -19,9 +19,9 @@ This repo only contains 2 scripts as following:
 >>pip install check_mk_web_api
 ```
 
-##Preparation for "saving data to mysql(checkmk_report.py)"
+## Preparation for "saving data to mysql(checkmk_report.py)"
 
-### The script "*all_hosts_to_mysql.py" is to STORE CHECKMK HOSTS INTO MYSQL.
+### The script "checkmk_report.py" is to STORE CHECKMK HOSTS INTO MYSQL.
 Below variables need to be updated when you are connecting to a new environment. Please check the scripts and replace them.
 
 ### Variables configured in checkmk.yml file:
