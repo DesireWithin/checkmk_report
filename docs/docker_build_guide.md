@@ -27,7 +27,7 @@ Build Your Image
 https://docs.docker.com/get-started/part2/
 
 ```
->>docker build --tag checkmkreport:1.0 .
+>>docker build --tag checkmkreport:1.0
 ```
 Run the following command to start a container based on your new image:
 ```
