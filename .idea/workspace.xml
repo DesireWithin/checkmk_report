@@ -20,8 +20,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="42628b4f-78f0-4edb-809d-a74e84735537" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/checkmk_report.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/checkmk_report.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/docker_build_guide.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/docker_build_guide.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -206,9 +209,10 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="727" y="226" width="524" height="509" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1606543821537">
-      <screen x="72" y="27" width="1844" height="901" />
+    <state x="682" y="230" width="524" height="509" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1606636633057">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
+    <state x="682" y="230" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1606636633057" />
     <state x="727" y="226" width="524" height="509" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/72.27.1844.901@72.27.1844.901" timestamp="1606543821537" />
     <state width="1821" height="279" key="GridCell.Tab.0.bottom" timestamp="1606543802739">
       <screen x="72" y="27" width="1844" height="901" />
@@ -226,6 +230,10 @@
       <screen x="72" y="27" width="1844" height="901" />
     </state>
     <state width="1821" height="279" key="GridCell.Tab.0.right/72.27.1844.901@72.27.1844.901" timestamp="1606543802738" />
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1606628289502">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1606628289502" />
     <state x="720" y="403" width="539" height="166" key="vcs.readOnlyHandler.ReadOnlyStatusDialog" timestamp="1606493128414">
       <screen x="72" y="27" width="1844" height="901" />
     </state>

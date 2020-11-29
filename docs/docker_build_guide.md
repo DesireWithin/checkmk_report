@@ -65,7 +65,7 @@ sudo systemctl restart docker
 >>yum list docker-ce --showduplicates | sort -r
 >>systemctl start docker
 ```
-if you meet errors like require container-selinux, try below
+If you meet errors like require container-selinux, try below
 ```
 >>yum install -y http://mirror.centos.org/centos/7/extras/x86_64/Packages/container-selinux-2.119.2-1.911c772.el7_8.noarch.rpm
 ```
@@ -78,11 +78,22 @@ https://docs.docker.com/get-started/part2/
 
 ```
 >>docker build --tag checkmkreport:1.0 .
+#删除镜像
+>>docker rmi image_id
 ```
 Run the following command to start a container based on your new image:
 ```
->>docker run --publish 8000:8080 --detach --name checkmk_report checkmkreport:1.0
+>>docker run --detach --name checkmk_report checkmkreport:1.0
+>>docker ps -a  # 复制container id
+>>docker start container_id  # 再次启动
+>>docker logs --tail='10' -t container_id  #查看最新10行的log
+# 将日志挂载到外面,先删除容器
+>>docker rm --force container_name  #通过docker ps -a查看容器名字
+>>mkdir logs
+>>docker run -it -d -e TZ="Asia/Shanghai" -v /root/checkmk_report/logs/:/opt/checkmk_report/logs --name checkmk_report checkmkreport:1.0
 ```
+
+
 There are a couple of common flags here:
 
 -- publish asks Docker to forward traffic incoming on the host’s port 8000 to the container’s port 8080. Containers have their own private set of ports, so if you want to reach one from the network, you have to forward traffic to it in this way. Otherwise, firewall rules will prevent all network traffic from reaching your container, as a default security posture.
