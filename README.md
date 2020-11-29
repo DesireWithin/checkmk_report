@@ -166,11 +166,11 @@ FROM all_hosts
 GROUP BY folder
 ```
 ### Grafana Look
-![image](https://github.com/ryanlll3/checkmk_report/blob/master/pictures/host_count_by_folder.jpg)
+![image](https://github.com/ryanlll3/checkmk_report/blob/master/pictures/host_count_by_folder.JPG)
 
 CheckMK Hosts Count
 ```
 select count(hostname) from all_hosts where folder like 'main/virtual_server/linux%';
 ```
 All Hosts Grafana Look
-![image](https://github.com/ryanlll3/checkmk_report/blob/master/pictures/all_hosts.jpg)
+![image](https://github.com/ryanlll3/checkmk_report/blob/master/pictures/all_hosts.JPG)
