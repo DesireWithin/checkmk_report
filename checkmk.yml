@@ -15,3 +15,6 @@ MYSQL_DB:
       DATABASE: 'checkmk'
       DB_CONN_CHAR: 'utf8'
       TABLE: 'all_hosts'
+
+REFRESH_INTERVAL:
+      SECONDS: 3600

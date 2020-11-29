@@ -83,6 +83,8 @@ DATABASE = conf.get('MYSQL_DB').get('DATABASE')
 DB_CONN_CHAR = conf.get('MYSQL_DB').get('DB_CONN_CHAR')
 TABLE = conf.get('MYSQL_DB').get('TABLE')
 
+INTERVAL = conf.get('REFRESH_INTERVAL').get('SECONDS')
+
 
 def setup_log(func):
     """配置日志"""
@@ -209,12 +211,14 @@ class CheckmkAPI(cmwa.WebApi):
 
 
 if __name__ == '__main__':
-    DB = CheckMKDB()
-    try:
-        DB.clean_data()
-        DB.store_hosts_to_db()
-    except Exception as e:
-        logging.error(e)
-    except KeyboardInterrupt:
-        logging.info('Exiting')
-    DB.close()
+    while True:
+        DB = CheckMKDB()
+        try:
+            DB.clean_data()
+            DB.store_hosts_to_db()
+        except Exception as e:
+            logging.error(e)
+        except KeyboardInterrupt:
+            logging.info('Exiting')
+        DB.close()
+        time.sleep(INTERVAL)
