@@ -153,8 +153,8 @@ FROM all_hosts
 GROUP BY monitored_by_site
 ```
 ### Grafana Look
-![image](https://github.com/ryanlll3/checkmk_report/blob/master/pictures/CheckMK_Sites_Capacity.jpg)
-
+![image](https://github.com/ryanlll3/checkmk_report/blob/master/pictures/site_capacity1.JPG)
+![image](https://github.com/ryanlll3/checkmk_report/blob/master/pictures/site_capacity2.JPG)
 
 ### CheckMK Folder
 ```
@@ -166,12 +166,11 @@ FROM all_hosts
 GROUP BY folder
 ```
 ### Grafana Look
-![image](https://github.com/ryanlll3/checkmk_report/blob/master/pictures/Grafana_dashboard_Look.jpg)
+![image](https://github.com/ryanlll3/checkmk_report/blob/master/pictures/host_count_by_folder.jpg)
 
-### CheckMK Hosts Count
-
+CheckMK Hosts Count
 ```
 select count(hostname) from all_hosts where folder like 'main/virtual_server/linux%';
 ```
-### Grafana Look
-![image](https://github.com/ryanlll3/checkmk_report/blob/master/pictures/Hosts_Info_Grafana.jpg)
+All Hosts Grafana Look
+![image](https://github.com/ryanlll3/checkmk_report/blob/master/pictures/all_hosts.jpg)
