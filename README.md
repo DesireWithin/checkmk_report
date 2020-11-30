@@ -157,10 +157,11 @@ https://pip.pypa.io/en/stable/installing/
 # View Files in Container WorkDIR
 >>docker exec container_id ls
 ```
+### Grafana Preparation
+https://grafana.com/get
+### SQL Selects for Grafana Panel
 
-## SQL Selects for Grafana Panel
-
-### CheckMK Capacity
+#### CheckMK Capacity
 ```
 SELECT
 sysdate() as time,
@@ -169,11 +170,12 @@ monitored_by_site as metric
 FROM all_hosts
 GROUP BY monitored_by_site
 ```
-### Grafana Look
+Dashboard Look
+
 ![image](https://github.com/ryanlll3/checkmk_report/blob/master/pictures/site_capacity1.JPG)
 ![image](https://github.com/ryanlll3/checkmk_report/blob/master/pictures/site_capacity2.JPG)
 
-### CheckMK Folder
+#### CheckMK Folder
 ```
 SELECT
 sysdate() as time,
@@ -182,12 +184,15 @@ folder as metric
 FROM all_hosts
 GROUP BY folder
 ```
-### Grafana Look
+Dashboard Look
+
 ![image](https://github.com/ryanlll3/checkmk_report/blob/master/pictures/host_count_by_folder.JPG)
 
-CheckMK Hosts Count
+#### CheckMK Hosts Count
 ```
 select count(hostname) from all_hosts where folder like 'main/virtual_server/linux%';
 ```
-All Hosts Grafana Look
+#### All Hosts
+Dashboard Look
+
 ![image](https://github.com/ryanlll3/checkmk_report/blob/master/pictures/all_hosts.JPG)
