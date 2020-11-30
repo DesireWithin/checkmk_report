@@ -120,12 +120,14 @@ https://pip.pypa.io/en/stable/installing/
 #### Docker Image Build
 ```
 >>cd checkmk_report
->>docker build --tag checkmkreport:1.0 .  #.表示当前目录，即包含Dockerfile的目录
+>>docker build --tag checkmkreport:1.0 .  # "."Current Path，the one with Dockerfile
 # View images
 >>docker images
 ```
 #### Container Build and Start
 ```
+# Attention: /root/checkmk_report/logs/ in below command refers to you are running as root, 
+# and also clone checkmk_report in root home directory.
 >>docker run -it -d -e TZ="Asia/Shanghai" -v /root/checkmk_report/logs/:/opt/checkmk_report/logs --name checkmk_report checkmkreport:1.0
 # Check container status
 >>docker ps -a
@@ -136,16 +138,22 @@ https://pip.pypa.io/en/stable/installing/
 ```
 # View Images
 >>docker images
+
 # Remove Images
 >>docker rmi image_id
+
 # View All Containers
 >>docker ps -a
+
 # Start a Container
 >>docker start container_name
+
 # Remove a Container
 >>docker rm --force container_name
+
 # View Container Logs
->>docker logs --tail='10' -t container_id  #View latest 10 lines of log
+>>docker logs --tail='10' -t container_id  # View latest 10 lines of log
+
 # View Files in Container WorkDIR
 >>docker exec container_id ls
 ```
