@@ -1,0 +1,4 @@
+# Location of App Logs
+# Python scrip has this log path "logs/checkmk_report.log".
+# You need use this command to mount log here.
+# >>docker run -it -d -e TZ="Asia/Shanghai" -v /root/checkmk_report/logs/:/opt/checkmk_report/logs --name checkmk_report checkmkreport:1.0
